@@ -1,0 +1,289 @@
+body{
+   
+  
+    overflow-x: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+}
+
+.navbarCont{
+    width: 100vw;
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.navbar_ul{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-left,.nav-middle,.nav-right{
+    display: flex;
+    align-items: center;
+}
+
+.nav-left{
+    width: 10%;
+    height: 100%;
+    color: white;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.nav-left p{
+    margin-top: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+
+.nav-middle{
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+}
+
+.nav-middle div{
+    width: 60%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.404);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 30px;
+    
+}
+
+.nav-middle div input{
+    width: 95%;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+}
+
+
+.nav-right{
+    width: 180px;
+    height: 100%;
+    cursor: pointer;
+    justify-content: space-evenly;
+    margin-right: 40px;
+    color: white;
+}
+
+.nav-right:hover{
+    background-color:rgba(246, 246, 246, 0.424);
+}
+
+.nav_user_dropdown{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.user_icon{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(179, 174, 174);
+    border-radius: 50px;
+    color: white;
+}
+
+.nav-right p{
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+
+.feedCont{
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow:scroll;
+}
+
+.info{
+  width: 900px;
+  height: 130px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.infoNav{
+  width: 100%;
+  height: 35%;
+  display: flex;
+  
+}
+
+.infoNav p{
+
+  padding: 2%;
+  height: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgb(6, 68, 149);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(6, 68, 149);
+}
+
+.headingFeed{
+  width: 900px;
+  height: auto;
+  
+}
+
+.headingFeed p{
+  font-size: 1.8rem;
+  color: white;
+
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.currMessages{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  color: rgb(129, 121, 121);
+}
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+:root {
+  --first-color: #0c0e27;
+  --second-color: #f5a623;
+  --white-color: #ededed;
+}
+
+*{
+    margin: 0;padding: 0;
+}
+
+
+.l-navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--first-color);
+  width: 55px;
+  height: 100vh;
+  z-index: 100;
+  padding: 1.25rem 0.5rem 2rem;
+  transition: 0.5s;
+
+}
+
+.l-navbar ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+/* Logo+Text CSS */
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  overflow:hidden;
+}
+.logo-icon {
+  margin-right: 1.5rem;
+  font-size:1.5rem;
+  color:white;
+}
+.logo-text {
+  color: white;
+  font-weight: 700;
+}
+
+/* Toggle Button */
+.nav-toggle {
+  position: absolute;
+  top: 1.4rem;
+  right: -0.5rem;
+  width: 18px;
+  height: 18px;
+  background-color: #f5a623;
+  border-radius: 50%;
+  color: var(--first-color);
+  cursor: pointer;
+  transform: all 0.5s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  transition: 0.3s;
+  overflow:hidden;
+}
+.nav-link:hover {
+  background-color: #f5a623;
+}
+.link-text {
+  margin-left: 1.5rem;
+  font-weight: 700;
+}
+.active {
+  background-color: var(--second-color);
+}
+.rotate {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+
+.show {
+  width: 170px;
+}
+.icon {
+  font-size: 1.5rem;
+}
+
+.logo-text{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 8px;
+}

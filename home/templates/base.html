@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css" integrity="sha512-3icgkoIO5qm2D4bGSUkPqeQ96LS8+ukJC7Eqhl1H5B2OJMEnFqLmNDxXVmtV/eq5M65tTDkUYS/Q0P4gvZv+yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static '/home/css/base.css'%}">
+    
+
+    {%block links%}
+
+    {%endblock%}
+    <title>{%block title%} {%endblock%}</title>
+
+
+    <style>
+        body{
+            background-image: url("{%static '/home/images/bgimage.jpg'%}");
+        }
+    </style>
+
+
+</head>
+<body>
+
+    
+
+    <div class="navbarCont">
+        <div class="navbar">
+            <ul class="navbar_ul">
+
+                <div class="nav-left">
+                    
+                </div>
+
+                <div class="nav-middle">
+                    <div id="nav_input_div">
+                        <input id="nav_input" type="text" placeholder="find task, document and more">
+                        <i class="material-icons">search</i>
+                    </div>
+                </div>
+
+                <div class="dropdown nav-right">
+                    <div class="dropdown-toggle nav_user_dropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="user_icon"><i class="material-icons">person_outline</i></div>
+                        <a>Creepy Dazze</a>
+                    </div>
+                    
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Tasks</a></li>
+                        <li><a class="dropdown-item" href="#">Projects</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    </ul>
+                </div>
+
+               
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="l-navbar" id="navbar">
+        <div class=".nav">
+          <!-- Logo+Text -->
+          <a href="{%url 'index'%}" class="nav-logo-container">
+            <i class="material-icons">dashboard</i>
+            <span class="logo-text">AFKBMT</span>
+          </a>
+          <!-- Toggle -->
+          <div class="nav-toggle" id="nav-toggle">
+            <i class="material-icons">chevron_right</i>
+          </div>
+          <!-- List -->
+          <ul class="nav-list">
+            <a href="{%url 'index'%}" class="nav-link active">
+                <i class="material-icons">stream</i>
+              <span class="link-text">Feeds</span>
+            </a>
+          
+
+            <a href="{%url 'task'%}" class="nav-link">
+                <i class="material-icons">task_alt</i>
+                <span class="link-text">task</span>
+            </a>
+  
+            <a href="{%url 'project'%}" class="nav-link">
+                <i class="material-icons">group_work</i>
+              <span class="link-text">Project</span>
+            </a>
+
+
+
+            <a href="{%url 'teams'%}" class="nav-link">
+                <i class="material-icons">groups</i>
+              <span class="link-text">Teams</span>
+            </a>
+
+            <a href="" class="nav-link">
+                <i class="material-icons">account_tree</i>
+              <span class="link-text">Track</span>
+            </a>
+  
+            <a href="" class="nav-link">
+                <i class="material-icons">question_answer</i>
+              <span class="link-text">chat</span>
+            </a>
+  
+            <a href="" class="nav-link">
+                <i class="material-icons">save</i>
+              <span class="link-text">Media</span>
+            </a>
+          </ul>
+        </div>
+      </div>
+  
+      
+      <div class="feedCont">
+
+        <div class="info">
+    
+            <div class="infoNav">
+                <p>Message</p>
+            </div>
+    
+            <div class="currMessages">
+                <h4>Current Messages...</h4>
+            </div>
+    
+    
+        </div>
+
+        {%block content%}
+
+        {%endblock%}
+    
+    </div>
+</body>
+<script src="{%static '/home/js/base.js'%}"></script>
+{%block js%}
+{%endblock%}
+</html>

@@ -1,0 +1,119 @@
+@import "https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/dashboard.scss";
+ .projects {
+	 background-color: #273142;
+	 border: 1px solid #313d4f;
+	 overflow-x: auto;
+	 width: 80%;
+     margin-top: 50px;
+     margin-left: 50px;
+}
+ .projects-inner {
+	 border-radius: 4px;
+}
+ .projects-header {
+	 color: white;
+	 padding: 22px;
+}
+ .projects-header .count, .projects-header .title {
+	 display: inline-block;
+}
+ .projects-header .count {
+	 color: #738297;
+}
+ .projects-header .zmdi {
+	 cursor: pointer;
+	 float: right;
+	 font-size: 16px;
+	 margin: 5px 0;
+}
+ .projects-header .title {
+	 font-size: 21px;
+}
+ .projects-header .title + .count {
+	 margin-left: 5px;
+}
+ .projects-table {
+	 background: #273142;
+	 width: 100%;
+}
+ .projects-table td, .projects-table th {
+	 color: white;
+	 padding: 10px 22px;
+	 vertical-align: middle;
+}
+ .projects-table td p {
+	 font-size: 12px;
+}
+ .projects-table td p:last-of-type {
+	 color: #738297;
+	 font-size: 11px;
+}
+ .projects-table th {
+	 background-color: #313d4f;
+}
+ .projects-table tr:hover {
+	 background-color: #303d52;
+}
+ .projects-table tr:not(:last-of-type) {
+	 border-bottom: 1px solid #313d4f;
+}
+ .projects-table .member figure, .projects-table .member .member-info {
+	 display: inline-block;
+	 vertical-align: top;
+}
+ .projects-table .member figure + .member-info {
+	 margin-left: 7px;
+}
+ .projects-table .member img {
+	 border-radius: 50%;
+	 height: 32px;
+	 width: 32px;
+}
+ .projects-table .status > form {
+	 float: right;
+}
+ .projects-table .status-text {
+	 display: inline-block;
+	 font-size: 12px;
+	 margin: 11px 0;
+	 padding-left: 20px;
+	 position: relative;
+}
+ .projects-table .status-text:before {
+	 border: 3px solid;
+	 border-radius: 50%;
+	 content: "";
+	 height: 14px;
+	 left: 0;
+	 position: absolute;
+	 top: 1px;
+	 width: 14px;
+}
+ .projects-table .status-text.status-blue:before {
+	 border-color: #1c93ed;
+}
+ .projects-table .status-text.status-green:before {
+	 border-color: #66b92e;
+}
+ .projects-table .status-text.status-orange:before {
+	 border-color: #da932c;
+}
+ .projects-table .status-text.status-red:before {
+	 border-color: #d65b4a;
+}
+ .selectric {
+	 background-color: transparent;
+	 border-color: #313d4f;
+	 border-radius: 4px;
+}
+ .selectric .label {
+	 color: #738297;
+	 line-height: 34px;
+	 margin-right: 10px;
+	 text-align: left;
+}
+ .selectric-wrapper {
+	 float: right;
+	 width: 150px;
+}
+ 
