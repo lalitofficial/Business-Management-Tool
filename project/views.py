@@ -6,3 +6,7 @@ def project(request):
 
 def task(request):
     return render(request,'task.html')
+
+def detail_task(request):
+
+    return render(request,'detail_task.html')
