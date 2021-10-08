@@ -2,8 +2,8 @@
 
 
 {%block links%}
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'home/css/teams.css'%}">
+{%load static%}
+<link rel="stylesheet" href="{%static 'home/css/teams.css'%}">
 {%endblock%}
 
 
@@ -16,22 +16,32 @@ Teams
 
 {%block content%}
 
-    
 
-    <div class="headingFeed">
-        <p>Organisation Chart</p>
-    </div>
 
-    <div class="feed">
-        <div id="orgChartContainer">
-            <div id="orgChart"></div>
-        </div>
+<div class="headingFeed">
+    <p>Organisation Chart</p>
+</div>
+
+<div class="feed">
+    <div id="orgChartContainer">
+        <div id="orgChart"></div>
     </div>
+</div>
 
 
 {%endblock%}
 
 
 {%block js%}
-<script src="{%static 'home/js/teams.js'%}"></script>
+<script>
+    var ChartData = [
+        { id: 1, name: 'AiForKids', parent: 0 },
+    ];
+
+   
+
+</script>
+<script src="{%static 'home/js/teams.js'%}">
+
+</script>
 {%endblock%}

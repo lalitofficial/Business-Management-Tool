@@ -1,10 +1,6 @@
 
 
 //  chart data
-var ChartData = [
-    {id: 1, name: 'AiForKids', parent: 0},
-    
-];
 
 
 

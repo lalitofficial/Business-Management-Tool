@@ -10,18 +10,21 @@
    
 }
 
+
 .task{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 70%;
-    height: 900px;
+    min-height: 900px;
+    height: auto;
     background-color: rgb(33,37,41);
-    padding: 20px;
+    padding:  70px;
 }
 
 .title, .desc,.remarks,.actions{
     display: flex;
+    margin-top: 30px;
 }
 
 .title{
@@ -41,11 +44,13 @@
 
 .deadline .deadline_heading{
     font-size: 1.3rem;
+    font-weight: 600;
     color: white;
 
 }
 .deadline .deadline_value{
-    color: green;
+    color: rgb(199, 193, 193);
+    font-size: 0.7rem;
 }
 
 
@@ -75,29 +80,48 @@
 .isexpire .dot{
     width: 15px;
     height: 15px;
-    background-color: green;
     border-radius: 50px;
+}
+
+.dot-red{
+    background-color: red;
+}
+.dot-green{
+    background-color: green;
+}
+.dot-orange{
+    background-color: orange;
 }
 
 .desc{
     width: 100%;
     height: 40%;
-
+    flex-direction: column;
     justify-content: center;
+    color: white;
     align-items: center;
 }
 
-.desc textarea{
+.desc .ckeText{
     width: 90%;
     height: 90%;
     background-color: inherit;
     padding: 20px;
+    padding: 40px;
+    /* background-color: red; */
+    border: 1px solid grey;
 }
 
 
+form{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 .remarks{
     width: 100%;
-    height: 25%;
+    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,6 +136,47 @@
 .actions{
     width: 100%;
     height: 10%;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+
+.actions label{
+    color: white;
+}
+
+.errors{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.attachments{
+    display: flex;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.attachments p{
+    font-size: 1.2rem;
+    color: white;
+    margin-right: 20px;
+}
+
+.attackments-preview{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.attackments-preview img{
+    width: 90%;
+    height: auto;
 }

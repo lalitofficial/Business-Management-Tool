@@ -5,6 +5,7 @@
 {%block links%}
     {%load static%}
     <link rel="stylesheet" href="{%static 'project/css/project.css'%}">
+
 {%endblock%}
 
 {%block title%} Projects {%endblock%}
@@ -15,8 +16,8 @@
 <div class="projects mb-4">
     <div class="projects-inner">
         <header class="projects-header">
-            <div class="title">Ongoing Projects</div>
-            <div class="count">| 32 Projects</div>
+            <div class="title">Ongoing Tasks</div>
+            <div class="count">| {{number_of_tasks}}</div>
             <i class="zmdi zmdi-download"></i>
         </header>
         <table class="projects-table">
@@ -25,45 +26,51 @@
                     <th>Task</th>
                     <th>Deadline</th>
                     <th>Assigned By</th>
-                    <th>Budget</th>
                     <th>Status</th>
                     <th class="text-right">Actions</th>
                 </tr>
             </thead>
+            
+
+            {%for task in tasks%}
+
             <tr>
                 <td>
-                    <p>New Dashboard</p>
-                    <p>Google</p>
+                    <p>{{task.title|truncatechars:15}}</p>
+                    <p>AIFORKIDS</p>
                 </td>
                 <td>
-                    <p>17th Oct, 15</p>
-                    <p class="text-danger">Overdue</p>
+                    <p>{{task.deadline}}</p>
+                    {%if task.get_status == 1%}
+                        <p class="text-danger">overdue</p>
+                    {%else%}
+                        <p style="color: green;">progressing</p>
+                    {%endif%}
+                    
                 </td>
                 <td class="member">
                     <figure><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png" /></figure>
                     <div class="member-info">
-                        <p>Myrtle Erickson</p>
-                        <p>UK Design Team</p>
+                        <p>{{task.assiged_by}}</p>
+                        <p>{{task.assiged_by.groups.all.0}}</p>
                     </div>
                 </td>
-                <td>
-                    <p>$4,670</p>
-                    <p>Paid</p>
-                </td>
+                
                 <td class="status">
-                    <span class="status-text status-orange">In progress</span>
+                    {%if task.get_status == 0%}
+                        <span class="status-text status-green">In Progress</span>
+                    {%elif task.get_status == 1%}
+                        <span class="status-text status-red">Task Overdue</span>
+                    {%elif task.get_status == 2%}
+                        <span class="status-text status-orange">In Review</span>
+                    {%endif%}
                 </td>
                 <td>
-                    <form class="form" action="#" method="POST">
-                    <select class="action-box">
-                        <option>Actions</option>
-                        <option>Start project</option>
-                        <option>Send for QA</option>
-                        <option>Send invoice</option>
-                    </select>
-                    </form>
+                    <a href="{%url 'detail_task' task.id%}" class="btn btn-success">See Task</a>
                 </td>
             </tr>
+
+            {%endfor%}
             
         </table>
     </div>

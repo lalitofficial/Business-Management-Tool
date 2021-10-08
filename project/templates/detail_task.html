@@ -1,10 +1,8 @@
-
-
 {%extends 'base.html'%}
 
 {%block links%}
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'project/css/detail_task.css'%}">
+{%load static%}
+<link rel="stylesheet" href="{%static 'project/css/detail_task.css'%}">
 {%endblock%}
 
 {%block title%} Projects {%endblock%}
@@ -14,44 +12,80 @@
 
 <div class="taskcont">
 
-    <div class="task">
+        <div class="task">
 
-        <div class="title">
-            <div class="deadline">
-                <p class="deadline_heading">Deadline</p>
-                <p class="deadline_value">31.03.3002</p>
+            <div class="title">
+                <div class="deadline">
+                    <p class="deadline_heading">Deadline</p>
+                    <p class="deadline_value">{{task.deadline}}</p>
+                </div>
+
+                <div class="heading">
+                    <p>{{task.title}}</p>
+                </div>
+
+                <div class="isexpire">
+                    {%if task.get_status == 0%}
+                    <div class="dot dot-green"></div>
+
+                    {%elif task.get_status == 1%}
+                    <div class="dot dot-red"></div>
+
+                    {%elif task.get_status == 2%}
+                    <div class="dot dot-orange"></div>
+
+                    {%endif%}
+                </div>
+
+
             </div>
 
-            <div class="heading">
-                <p>Hello this is heading</p>
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                <div class="remarks">
+                    {{form.media}}
+                    {{form.as_p}}
+                </div>
+
+                
+
+                <div class="actions">
+                    {% if is_super %}
+                    <input type="radio" name="command" class="radio" value="send_back"> <label for="command">Send Back</label>
+                    <input type="radio" name="command" class="radio" value="execute"> <label for="command">execute</label>
+                    {% endif %}
+                    <button type="submit" class="btn btn-success">Complete</button>
+
+                    <script>
+                        $(".radio").on('click',()=>{
+                            alert("are you sure?")
+                        })
+                   </script>
+                
+                </div>
+            </form>
+            <hr style="color: white;">
+            <div class="errors">
+                {%if messages%}
+                    {%for message in messages%}
+                        <p>{{message}}</p>
+                    {%endfor%}
+                {%endif%}
             </div>
 
-            <div class="isexpire">
-                <div class="dot"></div>
+            <div class="attackments-preview" style="color: white;">
+                <h2>Description</h2>
+                {{task.desc|safe}}
             </div>
+            
         </div>
-
-        <div class="desc">
-            <textarea name="task_description" id="desc"  disabled>dasdsadasd</textarea>
-        </div>
-
-        <div class="remarks">
-            <textarea name="remarks_description" id="r_desc"></textarea>
-        </div>
-
-        <div class="actions">
-            <button type="button" class="btn btn-success">Complete</button>
-        </div>
-
-    </div>
-
+    
+        
 </div>
 
 {%endblock%}
 
 
 {%block js%}
-    <!-- <script src="{%static 'project/js/project.js'%}"></script> -->
+<!-- <script src="{%static 'project/js/project.js'%}"></script> -->
 {%endblock%}
-
-

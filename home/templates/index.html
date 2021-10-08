@@ -32,14 +32,14 @@ Feeds
       </div>
 
       <div class="userInfoName">
-        <p>Swapnil Shinde</p>
-        <small>Fullstack Developer</small>
+        <p>{{user.name}}</p>
+        <small>{{user.groups.all.0|title}}</small>
       </div>
     </div>
 
     <div class="groups">
-      <p>UID: 1498</p>
-      <p>Level: 100xp</p>
+      <p>UID: {{user.get_username|title}}</p>
+      <p>Level: {{user.level}}XP</p>
     </div>
 
   </div>
@@ -74,7 +74,7 @@ Feeds
     <div class="task-heading">
       <p>Projects</p>
     </div>
-
+ 
     <div class="task">
       <p>This is task1 </p>
       <div class="task-status"></div>

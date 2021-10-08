@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {%load static%}
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+
+    <link rel="stylesheet" href="{%static 'login/css/login.css'%}">
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="form">
+        <form  method="POST" autocomplete="on" novalidate="novalidate">
+            {% csrf_token %}
+            <span id="login">Login</span>
+            <div class="inputdata">
+                <div id="emailinfo">
+                    <i id="icon" class="im im-mail"></i>
+                    <input id="email" name="uid" type="text" placeholder="UID">
+                </div>
+                <div id="passwordinfo">
+                    <i id="icon" class="im im-lock"></i>
+                    <input id="password" name="password" type="password" placeholder="Password">
+                </div>
+            </div>
+
+            {%if messages%}
+                {%for message in messages%}
+                    <span id="error">{{message}}</span>
+                {%endfor%}
+            {%endif%}
+                
+            <button id="submit">Login</button>
+        </form>
+        <hr id="formLine">
+    </div>
+</body>
+<script src="{%static 'login/js/login.js'%}"></script>
+</html>

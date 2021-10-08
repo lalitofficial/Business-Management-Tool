@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from home import models
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'project',
+    'login',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +64,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR,'home/templates'),
             os.path.join(BASE_DIR,'project/templates'),
+            os.path.join(BASE_DIR,'login/templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -69,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -130,6 +135,7 @@ STATICFILES_DIRS = [
 
     os.path.join(BASE_DIR,'home/static'),
     os.path.join(BASE_DIR,'project/static'),
+    os.path.join(BASE_DIR,'login/static'),
 
 ]
 
@@ -137,7 +143,19 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = "static"
 
+#  handeling media
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = "login.NewUser"
+
+
+CKEDITOR_UPLOAD_PATH = MEDIA_URL
