@@ -16,7 +16,7 @@ class Task(models.Model):
     remarks = RichTextField(blank=True,null=True)
 
 
-    assiged_by = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='%(class)s_requests_created',on_delete=models.CASCADE,blank=False,null=True)
+    assigned_by = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='%(class)s_requests_created',on_delete=models.CASCADE,blank=False,null=True)
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,blank=False,null=True)
     in_review = models.BooleanField(default=False)
     complete = models.BooleanField(default=False)

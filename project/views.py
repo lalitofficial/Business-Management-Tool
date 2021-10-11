@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http.response import Http404
 from django.shortcuts import render
 from afktm_backend.decoraters import check_authentication
 from .models import Task, Attachment
@@ -15,8 +16,15 @@ def project(request):
 @check_authentication
 def task(request):
 
-    user_tasks = Task.objects.all().filter(assigned_to=request.user)  
+
+    if(request.user.is_superuser):
+        user_tasks = Task.objects.all().filter(assigned_by=request.user)
+
+    elif(not request.user.is_superuser):
+        user_tasks = Task.objects.all().filter(assigned_to=request.user)
+
     number_of_tasks = len(user_tasks)
+        
 
     context = {
         "tasks":user_tasks,
@@ -25,17 +33,29 @@ def task(request):
 
     return render(request,'task.html',context)
 
+
+def check_malicious(request,model):
+    if model.assigned_by == request.user or model.assigned_to == request.user:
+        return True
+
+    return False
+
 @check_authentication
 def detail_task(request,id):
 
-    
     task = get_object_or_404(Task,pk=id)
-    is_super = False
+
+    # check if user accessing the task have access to the task
+
+    if not check_malicious(request,task):
+        raise Http404('You are not allowed to access')
+
+
+    
     remarks_form = CKEForm(request.POST or None,instance=task)
 
-    if(request.user.is_superuser):
-        is_super = True
-        
+    
+    
 
     if request.method == "POST":
             
@@ -44,10 +64,11 @@ def detail_task(request,id):
 
             if(command=="send_back"):
                 task.in_review = False
+                task.save()
             elif(command=="execute"):
                 
                 Task.objects.filter(id=task.id).delete()
-
+                task.save()
             messages.error(request,"superuser task executed.")
 
 
@@ -71,7 +92,7 @@ def detail_task(request,id):
 
     context = {
         "task":task,
-        'is_super':is_super,
+        'is_super':request.user.is_superuser,
         'form':remarks_form
     }
 
