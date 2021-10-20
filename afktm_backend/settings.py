@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-from home import models
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'project',
     'login',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +147,7 @@ STATIC_ROOT = "static"
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = os.path.join(BASE_DIR,' media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -157,5 +157,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "login.NewUser"
 
+#cke editor confs
 
-CKEDITOR_UPLOAD_PATH = MEDIA_URL
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_UPLOAD_PATH =  MEDIA_URL
+CKEDITOR_IMAGE_BACKEND  = 'pillow'
+
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar':None,
+    }
+}

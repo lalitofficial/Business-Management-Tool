@@ -50,23 +50,19 @@ Feeds
       <p>Tasks</p>
     </div>
 
-    <div class="task">
+    <!-- <div class="task">
       <p>This is task1 </p>
       <div class="task-status"></div>
-    </div>
-    <div class="task">
-      <p>This is task1 adsdasd sadasdas as </p>
-      <div class="task-status"></div>
-    </div>
-    <div class="task">
-      <p>This is task1 </p>
-      <div class="task-status"></div>
-    </div>
-    <div class="task">
-      <p>This is task1 </p>
-      <div class="task-status"></div>
-    </div>
+    </div>  -->
 
+    {%for task in tasks%}
+      <div  class="task">
+        <p><strong>{{task.title|truncatechars:30}} </strong></p>
+        <div class="task-status"></div>
+      </div> 
+    {%endfor%}
+
+    <div><a href="{%url 'task'%}">more</a></div>
   </div>
   
   <div class="user-tasks">

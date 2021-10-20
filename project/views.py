@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from afktm_backend.decoraters import check_authentication
-from .models import Task, Attachment
+from .models import Task
 from django.shortcuts import get_object_or_404
 
 from .forms import CKEForm
@@ -43,6 +43,7 @@ def check_malicious(request,model):
 @check_authentication
 def detail_task(request,id):
 
+    
     task = get_object_or_404(Task,pk=id)
 
     # check if user accessing the task have access to the task
@@ -60,16 +61,20 @@ def detail_task(request,id):
     if request.method == "POST":
             
         if(request.user.is_superuser):
-            command = request.POST['command']
+            try:
+                command = request.POST['command']
+            except:
+                command = None
 
             if(command=="send_back"):
                 task.in_review = False
                 task.save()
             elif(command=="execute"):
                 
-                Task.objects.filter(id=task.id).delete()
-                task.save()
-            messages.error(request,"superuser task executed.")
+                task.delete()
+                return redirect('task')
+            else:
+                messages.error(request,"select a task")
 
 
         else:
