@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 from django.conf import settings
 
+from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -11,9 +12,9 @@ from ckeditor.fields import RichTextField
 class Task(models.Model):
     deadline = models.DateField(null=True,blank=True)
     title = models.CharField(max_length=50,blank=False)
-    desc = RichTextField(blank=True,null=True)
+    desc = RichTextUploadingField (blank=True,null=True)
 
-    remarks = RichTextField(blank=True,null=True)
+    remarks = RichTextUploadingField(blank=True,null=True)
 
 
     assigned_by = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='%(class)s_requests_created',on_delete=models.CASCADE,blank=False,null=True)
@@ -38,7 +39,4 @@ class Task(models.Model):
         self.save()
 
 
-
-class Attachment(models.Model):
-    file = models.FileField(upload_to="files/%y/%m/%d",blank=True,default=None,null=True)
-    task = models.ForeignKey(Task,on_delete=models.CASCADE)
+    

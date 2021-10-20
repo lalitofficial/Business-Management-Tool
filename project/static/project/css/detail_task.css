@@ -56,7 +56,9 @@
 
 .heading{
     width: 50%;
-    height: 100%;
+    height: auto;
+    max-width: 100%;
+    word-wrap:break-word;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,6 +67,11 @@
     font-weight: 700;
     text-decoration: underline;
     
+}
+
+.heading p{
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .isexpire{
