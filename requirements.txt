@@ -4,7 +4,7 @@ django-ckeditor==6.1.0
 django-cors-headers==3.8.0
 django-js-asset==1.2.2
 djangorestframework==3.12.4
-Pillow==8.4.0
+Pillow==9.0.1
 pytz==2021.1
 rjsmin==1.1.0
 six==1.16.0
