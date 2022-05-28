@@ -1,5 +1,5 @@
 asgiref==3.4.1
-Django==3.2.7
+Django==3.2.13
 django-ckeditor==6.1.0
 django-cors-headers==3.8.0
 django-js-asset==1.2.2
